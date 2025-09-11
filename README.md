@@ -3,6 +3,9 @@
   <img src="https://img.freepik.com/vector-gratis/fondo-abstracto-grafico-datos_23-2148479722.jpg" alt="Fondo Estadística e Informática" width="100%">
 </p>
 
+<!-- Contenedor con fondo azul eléctrico -->
+<div style="background-color:#007FFF; padding:20px; border-radius:15px; color:white;">
+
 <h1 align="center">🎓✨ FINESI 2025 ✨💻</h1>
 
 <p align="center">
