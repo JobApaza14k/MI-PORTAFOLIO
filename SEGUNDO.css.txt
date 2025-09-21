@@ -1,0 +1,96 @@
+body {
+    background-color: lightblue; /* Fondo celeste */
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: #003366;
+    
+    /* Estilos para la imagen de fondo (marca de agua con movimiento) */
+    background-image: url('descarga.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    opacity: 0.2; /* Nivel de transparencia (0.2 = 20%) */
+    animation: movimiento-fondo 15s infinite alternate; /* Añade la animación */
+}
+
+/* Animación de la imagen de fondo */
+@keyframes movimiento-fondo {
+    from {
+        background-position: center 0%;
+    }
+    to {
+        background-position: center 100%;
+    }
+}
+
+/* Estilos para la imagen superior fija */
+.imagen-superior-fija {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+}
+
+/* Estilos para la imagen inferior fija */
+.imagen-inferior-fija {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    z-index: 1000;
+}
+
+header {
+    background-color: #007acc;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+nav {
+    background-color: #005f99;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: white;
+    padding: 14px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+nav a:hover {
+    background-color: #004466;
+}
+
+section {
+    padding: 30px;
+    max-width: 900px;
+    margin: auto;
+}
+
+h2 {
+    color: #002244;
+}
+
+.trabajos {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+}
+
+footer {
+    background-color: #003366;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-top: 20px;
+}
