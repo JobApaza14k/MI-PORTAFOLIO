@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página con Fondo Azul y Barra</title>
+  <style>
+    body {
+      background-color: blue; /* Fondo azul */
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: white;
+    }
+
+    /* Barra de navegación */
+    .navbar {
+      background-color: #003366; /* Azul oscuro para contraste */
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+    }
+
+    .navbar a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 20px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    .navbar a:hover {
+      background-color: #0059b3; /* Azul más claro al pasar el mouse */
+    }
+
+    /* Contenido principal */
+    .contenido {
+      text-align: center;
+      margin-top: 100px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Barra de navegación -->
+  <div class="navbar">
+    <a href="#estudiante">Datos del Estudiante</a>
+    <a href="#curso">Curso y Docente</a>
+    <a href="#trabajos">Trabajos</a>
+  </div>
+
+  <!-- Contenido -->
+  <div class="contenido">
+    <h1>Bienvenido a Mi Página</h1>
+    <p>Selecciona una opción en la barra de arriba.</p>
+  </div>
+</body>
+</html>
