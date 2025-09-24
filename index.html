@@ -35,7 +35,7 @@
         }
 
         .header img {
-            max-width: 200px;
+            max-width: 400px;
             height: auto;
             border-radius: 15px;
             margin-bottom: 20px;
@@ -169,6 +169,11 @@
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
         }
 
+        .file-input {
+            margin-top: 15px;
+            width: 100%;
+        }
+
         .footer {
             text-align: center;
             margin-top: 50px;
@@ -196,7 +201,8 @@
 <body>
     <div class="container">
         <header class="header">
-            <img src="imagen_1.jpg" alt="Imagen del curso" id="imagen-curso">
+            <!-- Imagen que me enviaste -->
+            <img src="imagen_1.jpeg" alt="Imagen del curso" id="imagen-curso">
             <h1>PROGRAMACIÓN NUMÉRICA</h1>
             <div class="docente">Docente: FRED CRUZ TORRES</div>
             <div class="estudiante">Estudiante: JOB EDWARD APAZA CURTIHUANCA</div>
@@ -234,6 +240,7 @@
             <section class="unidad unidad-1">
                 <h2>📚 UNIDAD 1</h2>
                 <ul class="trabajos-lista" id="trabajos-unidad1"></ul>
+                <input type="file" class="file-input" onchange="subirTrabajo(event, 1)">
                 <button class="agregar-trabajo" onclick="agregarTrabajo(1)">
                     ➕ Agregar Nuevo Trabajo
                 </button>
@@ -242,6 +249,7 @@
             <section class="unidad unidad-2">
                 <h2>📊 UNIDAD 2</h2>
                 <ul class="trabajos-lista" id="trabajos-unidad2"></ul>
+                <input type="file" class="file-input" onchange="subirTrabajo(event, 2)">
                 <button class="agregar-trabajo" onclick="agregarTrabajo(2)">
                     ➕ Agregar Nuevo Trabajo
                 </button>
@@ -255,10 +263,7 @@
     </div>
 
     <script>
-        let contadorTrabajos = {
-            1: 1,
-            2: 1
-        };
+        let contadorTrabajos = { 1: 1, 2: 1 };
 
         function mostrarMensaje(trabajo) {
             alert(`Has seleccionado: ${trabajo}\n\n¡Aquí puedes agregar el enlace a tu trabajo!`);
@@ -266,48 +271,35 @@
 
         function agregarTrabajo(unidad) {
             const nombreTrabajo = prompt(`Ingresa el nombre del nuevo trabajo para la Unidad ${unidad}:`);
-            
             if (nombreTrabajo && nombreTrabajo.trim() !== '') {
-                const lista = document.getElementById(`trabajos-unidad${unidad}`);
-                const nuevoItem = document.createElement('li');
-                nuevoItem.className = 'trabajo-item';
-                
-                nuevoItem.innerHTML = `
-                    <a href="#" onclick="mostrarMensaje('${nombreTrabajo}')">
-                        Tarea ${contadorTrabajos[unidad]}: ${nombreTrabajo}
-                    </a>
-                `;
-                
-                lista.appendChild(nuevoItem);
+                agregarItem(unidad, `Tarea ${contadorTrabajos[unidad]}: ${nombreTrabajo}`);
                 contadorTrabajos[unidad]++;
-                
-                nuevoItem.style.opacity = '0';
-                nuevoItem.style.transform = 'translateY(-20px)';
-                setTimeout(() => {
-                    nuevoItem.style.transition = 'all 0.5s ease';
-                    nuevoItem.style.opacity = '1';
-                    nuevoItem.style.transform = 'translateY(0)';
-                }, 100);
             }
         }
 
-        document.getElementById('imagen-curso').onerror = function() {
-            this.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjE1MCIgdmlld0JveD0iMCAwIDIwMCAxNTAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyMDAiIGhlaWdodD0iMTUwIiBmaWxsPSIjZjhmOWZhIi8+CjxwYXRoIGQ9Ik04NCA2NUw2NCA4NUw4NCA5NUwxMDQgODVMODQgNjVaIiBmaWxsPSIjZGRkZGRkIi8+Cjx0ZXh0IHg9IjEwMCIgeT0iMTIwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjOTk5OTk5IiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiPkltYWdlbiBubyBkaXNwb25pYmxlPC90ZXh0Pgo8L3N2Zz4=';
-            this.alt = 'Imagen no disponible - Por favor agrega imagen_1.jpg';
-        };
+        function subirTrabajo(event, unidad) {
+            const archivo = event.target.files[0];
+            if (archivo) {
+                agregarItem(unidad, `Archivo: ${archivo.name}`);
+                contadorTrabajos[unidad]++;
+            }
+        }
 
-        document.addEventListener('DOMContentLoaded', function() {
-            const elementos = document.querySelectorAll('.unidad, .info-section');
-            elementos.forEach((elemento, index) => {
-                elemento.style.opacity = '0';
-                elemento.style.transform = 'translateY(30px)';
-                setTimeout(() => {
-                    elemento.style.transition = 'all 0.6s ease';
-                    elemento.style.opacity = '1';
-                    elemento.style.transform = 'translateY(0)';
-                }, index * 200);
-            });
-        });
+        function agregarItem(unidad, texto) {
+            const lista = document.getElementById(`trabajos-unidad${unidad}`);
+            const nuevoItem = document.createElement('li');
+            nuevoItem.className = 'trabajo-item';
+            nuevoItem.textContent = texto;
+            lista.appendChild(nuevoItem);
+
+            nuevoItem.style.opacity = '0';
+            nuevoItem.style.transform = 'translateY(-20px)';
+            setTimeout(() => {
+                nuevoItem.style.transition = 'all 0.5s ease';
+                nuevoItem.style.opacity = '1';
+                nuevoItem.style.transform = 'translateY(0)';
+            }, 100);
+        }
     </script>
 </body>
 </html>
