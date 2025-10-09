@@ -1,305 +1,247 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Programación Numérica - Job Edward Apaza Curtihuanca</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Programación Numérica - Job Edward Apaza Curtihuanca</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-        }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #333;
+      line-height: 1.6;
+    }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
+    .header-image {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      display: block;
+    }
 
-        .header {
-            text-align: center;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-            margin-bottom: 30px;
-        }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: white;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+    }
 
-        .header img {
-            max-width: 400px;
-            height: auto;
-            border-radius: 15px;
-            margin-bottom: 20px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-        }
+    header {
+      background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+      color: white;
+      padding: 40px 30px;
+      text-align: center;
+    }
 
-        .header h1 {
-            color: #2c3e50;
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            font-weight: bold;
-        }
+    header h1 {
+      font-size: 2.5em;
+      margin-bottom: 15px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
 
-        .info-section {
-            background: rgba(255, 255, 255, 0.9);
-            padding: 30px;
-            border-radius: 15px;
-            margin-bottom: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
+    .info-box {
+      background: rgba(255,255,255,0.1);
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
 
-        .docente {
-            font-size: 1.3em;
-            color: #e74c3c;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
+    .info-box p {
+      margin: 8px 0;
+      font-size: 1.1em;
+    }
 
-        .estudiante {
-            font-size: 1.2em;
-            color: #3498db;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
+    .content {
+      padding: 40px 30px;
+    }
 
-        .curso {
-            font-size: 1.1em;
-            color: #8e44ad;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
+    section {
+      margin-bottom: 40px;
+      padding: 30px;
+      background: #f8f9fa;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
 
-        .descripcion h3 {
-            color: #2c3e50;
-            margin-bottom: 15px;
-            font-size: 1.4em;
-        }
+    section h2 {
+      color: #2a5298;
+      margin-bottom: 20px;
+      font-size: 1.8em;
+      border-bottom: 3px solid #667eea;
+      padding-bottom: 10px;
+    }
 
-        .descripcion p {
-            text-align: justify;
-            margin-bottom: 15px;
-            color: #555;
-        }
+    section p {
+      text-align: justify;
+      font-size: 1.05em;
+      color: #555;
+      margin-bottom: 15px;
+    }
 
-        .vision-mision {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin-top: 30px;
-        }
+    .unidades {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+      gap: 30px;
+      margin-top: 30px;
+    }
 
-        .vision, .mision {
-            background: linear-gradient(135deg, #74b9ff, #0984e3);
-            color: white;
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-        }
+    .unidad {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+      transition: transform 0.3s ease;
+    }
 
-        .mision {
-            background: linear-gradient(135deg, #fd79a8, #e84393);
-        }
+    .unidad:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
 
-        .vision h4, .mision h4 {
-            margin-bottom: 15px;
-            font-size: 1.3em;
-        }
+    .unidad h3 {
+      color: #764ba2;
+      font-size: 1.8em;
+      margin-bottom: 20px;
+      text-align: center;
+    }
 
-        .unidades {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            margin-top: 30px;
-        }
+    .lista-trabajos {
+      list-style: none;
+      padding-left: 0;
+    }
 
-        .unidad {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
+    .lista-trabajos li {
+      margin: 15px 0;
+      padding: 15px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
 
-        .unidad:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
-        }
+    .lista-trabajos li:hover {
+      transform: translateX(10px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
 
-        .unidad h2 {
-            color: #2c3e50;
-            text-align: center;
-            margin-bottom: 20px;
-            font-size: 1.8em;
-            padding-bottom: 10px;
-            border-bottom: 3px solid #3498db;
-        }
+    .lista-trabajos a {
+      color: white;
+      text-decoration: none;
+      font-size: 1.1em;
+      font-weight: 500;
+      display: block;
+    }
 
-        .unidad-2 h2 {
-            border-bottom-color: #e74c3c;
-        }
+    .lista-trabajos a:hover {
+      text-decoration: underline;
+    }
 
-        .trabajos-lista {
-            list-style: none;
-        }
+    footer {
+      background: #1e3c72;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
 
-        .agregar-trabajo {
-            background: linear-gradient(135deg, #00cec9, #55a3ff);
-            color: white;
-            padding: 15px;
-            border: none;
-            border-radius: 10px;
-            font-weight: bold;
-            cursor: pointer;
-            width: 100%;
-            margin-top: 20px;
-            transition: all 0.3s ease;
-        }
-
-        .agregar-trabajo:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-        }
-
-        .file-input {
-            margin-top: 15px;
-            width: 100%;
-        }
-
-        .footer {
-            text-align: center;
-            margin-top: 50px;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 15px;
-            color: #666;
-        }
-
-        @media (max-width: 768px) {
-            .unidades {
-                grid-template-columns: 1fr;
-            }
-            
-            .vision-mision {
-                grid-template-columns: 1fr;
-            }
-            
-            .header h1 {
-                font-size: 2em;
-            }
-        }
-    </style>
+    @media (max-width: 768px) {
+      .unidades {
+        grid-template-columns: 1fr;
+      }
+      
+      header h1 {
+        font-size: 1.8em;
+      }
+      
+      .content {
+        padding: 20px 15px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <header class="header">
-            <!-- Imagen que me enviaste -->
-            <img src="imagen_1.jpeg" alt="Imagen del curso" id="imagen-curso">
-            <h1>PROGRAMACIÓN NUMÉRICA</h1>
-            <div class="docente">Docente: FRED CRUZ TORRES</div>
-            <div class="estudiante">Estudiante: JOB EDWARD APAZA CURTIHUANCA</div>
-            <div class="curso">Curso: PROGRAMACIÓN NUMÉRICA</div>
-        </header>
+  <div class="container">
+    <!-- Imagen superior -->
+    <!-- AQUÍ PUEDES AGREGAR TU IMAGEN: Reemplaza "imagen_1.jpg" con el nombre de tu archivo -->
+    <img src="imagen_1.jpg" alt="Banner del curso" class="header-image">
 
-        <section class="info-section">
-            <div class="descripcion">
-                <h3>📋 Descripción del Curso</h3>
-                <p>
-                    La Programación Numérica es una disciplina fundamental en la ingeniería y ciencias computacionales que se enfoca en el desarrollo y implementación de algoritmos para resolver problemas matemáticos complejos mediante métodos numéricos. Este curso abarca desde los fundamentos teóricos hasta la aplicación práctica de técnicas computacionales para la resolución de ecuaciones, interpolación, integración numérica, optimización y análisis de datos.
-                </p>
-                <p>
-                    Durante el desarrollo del curso, los estudiantes aprenderán a implementar algoritmos eficientes, analizar su convergencia y estabilidad, y aplicar herramientas de programación modernas para resolver problemas del mundo real en diversas áreas como la ingeniería, física, economía y ciencias de datos.
-                </p>
-            </div>
+    <header>
+      <h1>📊 PROGRAMACIÓN NUMÉRICA</h1>
+      <div class="info-box">
+        <p><strong>👨‍🏫 Docente:</strong> FRED CRUZ TORRES</p>
+        <p><strong>👨‍🎓 Estudiante:</strong> JOB EDWARD APAZA CURTIHUANCA</p>
+      </div>
+    </header>
 
-            <div class="vision-mision">
-                <div class="vision">
-                    <h4>🔭 Visión Personal</h4>
-                    <p>
-                        Convertirme en un profesional competente en el desarrollo de soluciones numéricas innovadoras, aplicando conocimientos sólidos en programación y matemáticas para contribuir al avance tecnológico y resolver problemas complejos que beneficien a la sociedad.
-                    </p>
-                </div>
-                <div class="mision">
-                    <h4>🎯 Misión Personal</h4>
-                    <p>
-                        Desarrollar habilidades excepcionales en programación numérica, mantener un aprendizaje continuo, colaborar efectivamente en equipos multidisciplinarios y aplicar métodos numéricos para crear soluciones eficientes y precisas en el ámbito académico y profesional.
-                    </p>
-                </div>
-            </div>
-        </section>
+    <div class="content">
+      <!-- Descripción del curso -->
+      <section>
+        <h2>📚 Descripción del Curso</h2>
+        <p>
+          La Programación Numérica es una disciplina fundamental en la ingeniería y las ciencias computacionales que se enfoca en el desarrollo e implementación de algoritmos para resolver problemas matemáticos mediante métodos numéricos. Este curso aborda técnicas esenciales para la solución de ecuaciones, sistemas lineales, interpolación, diferenciación e integración numérica, así como la resolución de ecuaciones diferenciales.
+        </p>
+        <p>
+          A través de este curso, los estudiantes desarrollan habilidades para implementar algoritmos eficientes, analizar errores numéricos y aplicar métodos computacionales a problemas reales de ingeniería. Se utilizan herramientas de programación modernas para simular y visualizar soluciones, preparando a los estudiantes para enfrentar desafíos técnicos en el ámbito profesional.
+        </p>
+      </section>
 
-        <main class="unidades">
-            <section class="unidad unidad-1">
-                <h2>📚 UNIDAD 1</h2>
-                <ul class="trabajos-lista" id="trabajos-unidad1"></ul>
-                <input type="file" class="file-input" onchange="subirTrabajo(event, 1)">
-                <button class="agregar-trabajo" onclick="agregarTrabajo(1)">
-                    ➕ Agregar Nuevo Trabajo
-                </button>
-            </section>
+      <!-- Visión -->
+      <section>
+        <h2>🔭 Visión</h2>
+        <p>
+          Convertirme en un profesional altamente capacitado en el campo de la ingeniería y las ciencias computacionales, dominando técnicas avanzadas de programación numérica y métodos computacionales. Aspiro a contribuir significativamente al desarrollo de soluciones innovadoras que impacten positivamente en la sociedad, aplicando conocimientos matemáticos y algorítmicos para resolver problemas complejos del mundo real con precisión y eficiencia.
+        </p>
+      </section>
 
-            <section class="unidad unidad-2">
-                <h2>📊 UNIDAD 2</h2>
-                <ul class="trabajos-lista" id="trabajos-unidad2"></ul>
-                <input type="file" class="file-input" onchange="subirTrabajo(event, 2)">
-                <button class="agregar-trabajo" onclick="agregarTrabajo(2)">
-                    ➕ Agregar Nuevo Trabajo
-                </button>
-            </section>
-        </main>
+      <!-- Misión -->
+      <section>
+        <h2>🎯 Misión</h2>
+        <p>
+          Mi misión como estudiante es desarrollar una comprensión profunda de los métodos numéricos y su implementación computacional, dedicándome al aprendizaje continuo y la práctica constante. Me comprometo a aplicar rigurosamente los conocimientos adquiridos en cada proyecto, mantener altos estándares de calidad en mi trabajo académico, y colaborar activamente con mis compañeros y docentes. Busco no solo aprobar el curso, sino dominar las competencias necesarias para destacar como profesional en el campo de la programación numérica y la resolución de problemas científicos.
+        </p>
+      </section>
 
-        <footer class="footer">
-            <p>&copy; 2024 Job Edward Apaza Curtihuanca - Programación Numérica</p>
-            <p>Universidad - Curso dictado por Fred Cruz Torres</p>
-        </footer>
+      <!-- Unidades de trabajo -->
+      <div class="unidades">
+        <!-- UNIDAD 1 -->
+        <div class="unidad">
+          <h3>📘 UNIDAD 1</h3>
+          <section>
+            <h2>📁 Trabajos realizados</h2>
+            <ol class="lista-trabajos">
+              <!-- AQUÍ AGREGA TUS LINKS DE LA UNIDAD 1 -->
+              <li><a href="https://github.com/tuusuario/proyecto1" target="_blank">1️⃣ Identificacion de funciones</a></li>
+              <li><a href="https://github.com/JobApaza14k/proyecto-de-practica-1/blob/main/graficador.py" target="_blank">2️⃣ graficador de sistemas lineales</a></li>
+              <li><a href="https://github.com/JobApaza14k/proyecto-de-practica-1/blob/main/ejercicios%20resueltos.py" target="_blank">3️⃣ ejercicios resueltos</a></li>
+              <li><a href="https://github.com/JobApaza14k/proyecto-de-practica-1/blob/main/metodo_Rapson.py" target="_blank">4️⃣ hallando raices</a></li>
+            </ol>
+          </section>
+        </div>
+
+        <!-- UNIDAD 2 -->
+        <div class="unidad">
+          <h3>📗 UNIDAD 2</h3>
+          <section>
+            <h2>📁 Trabajos realizados</h2>
+            <ol class="lista-trabajos">
+              <!-- AQUÍ AGREGA TUS LINKS DE LA UNIDAD 2 -->
+              <li><a href="https://github.com/tuusuario/proyecto5" target="_blank">1️⃣ SIN TRABAJOS</a></li>
+              
+            </ol>
+          </section>
+        </div>
+      </div>
     </div>
 
-    <script>
-        let contadorTrabajos = { 1: 1, 2: 1 };
-
-        function mostrarMensaje(trabajo) {
-            alert(`Has seleccionado: ${trabajo}\n\n¡Aquí puedes agregar el enlace a tu trabajo!`);
-        }
-
-        function agregarTrabajo(unidad) {
-            const nombreTrabajo = prompt(`Ingresa el nombre del nuevo trabajo para la Unidad ${unidad}:`);
-            if (nombreTrabajo && nombreTrabajo.trim() !== '') {
-                agregarItem(unidad, `Tarea ${contadorTrabajos[unidad]}: ${nombreTrabajo}`);
-                contadorTrabajos[unidad]++;
-            }
-        }
-
-        function subirTrabajo(event, unidad) {
-            const archivo = event.target.files[0];
-            if (archivo) {
-                agregarItem(unidad, `Archivo: ${archivo.name}`);
-                contadorTrabajos[unidad]++;
-            }
-        }
-
-        function agregarItem(unidad, texto) {
-            const lista = document.getElementById(`trabajos-unidad${unidad}`);
-            const nuevoItem = document.createElement('li');
-            nuevoItem.className = 'trabajo-item';
-            nuevoItem.textContent = texto;
-            lista.appendChild(nuevoItem);
-
-            nuevoItem.style.opacity = '0';
-            nuevoItem.style.transform = 'translateY(-20px)';
-            setTimeout(() => {
-                nuevoItem.style.transition = 'all 0.5s ease';
-                nuevoItem.style.opacity = '1';
-                nuevoItem.style.transform = 'translateY(0)';
-            }, 100);
-        }
-    </script>
+    <footer>
+      <p>&copy; 2025 Job Edward Apaza Curtihuanca - Programación Numérica</p>
+      <p>Universidad Nacional del Altiplano</p>
+    </footer>
+  </div>
 </body>
 </html>
